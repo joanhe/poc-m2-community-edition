@@ -3,6 +3,16 @@
     "description": "eCommerce Platform for Growth (Community Edition)",
     "type": "magento2-component",
     "version": "0.1.0-alpha99",
+        "repositories": [
+		  {
+            "type": "composer",
+            "url": "http://packages.magento.com/"
+        },
+		 {
+            "type": "vcs",
+            "url": "https://github.com/bibumathew/magento-composer-installer.git"
+        }
+    ],
     "require": {
         "php": "~5.4.11|~5.5.0",
         "zendframework/zend-stdlib": "2.0.3",
@@ -134,6 +144,8 @@
         "tinymce/tinymce": "3.4.7"
     },
     "extra": {
+        "magento-root-dir": "./",
+        "magento-deploystrategy": "copy",
         "component_paths": {
             "zendframework/zend-eventmanager": "lib/internal/Zend/EventManager",
             "zendframework/zend-di": "lib/internal/Zend/Di",
