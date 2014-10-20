@@ -2,7 +2,7 @@
     "name": "magento/product-community-edition",
     "description": "eCommerce Platform for Growth (Community Edition)",
     "type": "magento2-component",
-    "version": "0.1.0-alpha99",
+    "version": "0.1.0-alpha95",
     "require": {
         "php": "~5.4.11|~5.5.0",
         "magento/magento-composer-installer": "*"
