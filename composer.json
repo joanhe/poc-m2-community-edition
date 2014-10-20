@@ -16,7 +16,6 @@
     "require": {
     	"magento/magento-composer-installer": "*",
         "php": "~5.4.11|~5.5.0",
-        "zendframework/zend-stdlib": "2.0.3",
         "magento/module-admin-notification": "0.1.0-alpha95",
         "magento/module-authorization": "0.1.0-alpha95",
         "magento/module-authorizenet": "0.1.0-alpha95",
@@ -58,12 +57,12 @@
         "magento/module-grouped-import-export": "0.1.0-alpha95",
         "magento/module-grouped-product": "0.1.0-alpha95",
         "magento/module-import-export": "0.1.0-alpha95",
+        "magento/module-index": "0.1.0-alpha95",
         "magento/module-indexer": "0.1.0-alpha95",
         "magento/module-install": "0.1.0-alpha95",
         "magento/module-integration": "0.1.0-alpha95",
         "magento/module-layered-navigation": "0.1.0-alpha95",
         "magento/module-log": "0.1.0-alpha95",
-        "magento/module-msrp": "0.1.0-alpha95",
         "magento/module-multishipping": "0.1.0-alpha95",
         "magento/module-newsletter": "0.1.0-alpha95",
         "magento/module-offline-payments": "0.1.0-alpha95",
@@ -83,7 +82,6 @@
         "magento/module-rule": "0.1.0-alpha95",
         "magento/module-sales": "0.1.0-alpha95",
         "magento/module-sales-rule": "0.1.0-alpha95",
-        "magento/module-search": "0.1.0-alpha95",
         "magento/module-sendfriend": "0.1.0-alpha95",
         "magento/module-shipping": "0.1.0-alpha95",
         "magento/module-sitemap": "0.1.0-alpha95",
@@ -92,7 +90,6 @@
         "magento/module-tax-import-export": "0.1.0-alpha95",
         "magento/module-theme": "0.1.0-alpha95",
         "magento/module-translation": "0.1.0-alpha95",
-        "magento/module-ui": "0.1.0-alpha95",
         "magento/module-ups": "0.1.0-alpha95",
         "magento/module-url-rewrite": "0.1.0-alpha95",
         "magento/module-user": "0.1.0-alpha95",
@@ -149,6 +146,7 @@
         "magento-deploystrategy": "copy",
         "component_paths": {
             "zendframework/zend-eventmanager": "lib/internal/Zend/EventManager",
+            "zendframework/zend-stdlib": "lib/internal/Zend/Stdlib",
             "zendframework/zend-di": "lib/internal/Zend/Di",
             "zendframework/zend-escaper": "lib/internal/Zend/Escaper",
             "zendframework/zend-i18n": "lib/internal/Zend/I18n",
@@ -183,170 +181,115 @@
             ],
             "twbs/bootstrap": [
                 "lib/web/jquery/jquery.tabs.js",
-                "lib/web/jquery/jquery.popups.js"
+                "lib/web/jquery/jquery.popups.js",
+                "lib/web/jquery/bootstrap-carousel"
             ],
             "tinymce/tinymce": "lib/web/tiny_mce"
         },
         "map": [
             [
-                "php.ini.sample",
-                "php.ini.sample"
+                "setup",
+                "setup"
             ],
             [
-                "composer.json",
-                "composer.json"
-            ],
-            [
-                "README.md",
-                "README.md"
+                ".htaccess.sample",
+                ".htaccess.sample"
             ],
             [
                 "CONTRIBUTOR_LICENSE_AGREEMENT.html",
                 "CONTRIBUTOR_LICENSE_AGREEMENT.html"
             ],
             [
-                "CHANGELOG.md",
-                "CHANGELOG.md"
+                "composer.json",
+                "composer.json"
             ],
             [
-                "dev/tools",
-                "dev/tools"
+                "LICENSE.txt",
+                "LICENSE.txt"
             ],
             [
-                "dev/.htaccess",
-                "dev/.htaccess"
+                ".travis.yml",
+                ".travis.yml"
             ],
             [
-                "dev/shell",
-                "dev/shell"
+                "app/autoload.php",
+                "app/autoload.php"
             ],
             [
-                "dev/tests/js/run_js_tests.php",
-                "dev/tests/js/run_js_tests.php"
+                "app/functions.php",
+                "app/functions.php"
             ],
             [
-                "dev/tests/js/testsuite/lib",
-                "dev/tests/js/testsuite/lib"
+                "app/bootstrap.php",
+                "app/bootstrap.php"
             ],
             [
-                "dev/tests/js/testsuite/mage",
-                "dev/tests/js/testsuite/mage"
+                "app/.htaccess",
+                "app/.htaccess"
             ],
             [
-                "dev/tests/js/jsTestDriver.php.dist",
-                "dev/tests/js/jsTestDriver.php.dist"
+                "app/etc/di.xml",
+                "app/etc/di.xml"
             ],
             [
-                "dev/tests/js/jsTestDriverOrder.php",
-                "dev/tests/js/jsTestDriverOrder.php"
+                "app/etc/local.xml.template",
+                "app/etc/local.xml.template"
             ],
             [
-                "dev/tests/js/framework",
-                "dev/tests/js/framework"
+                "app/code/Zend",
+                "app/code/Zend"
             ],
             [
-                "dev/tests/js/.gitignore",
-                "dev/tests/js/.gitignore"
+                "app/design/install",
+                "app/design/install"
             ],
             [
-                "dev/tests/functional/composer.json.dist",
-                "dev/tests/functional/composer.json.dist"
-            ],
-            [
-                "dev/tests/functional/bootstrap.php",
-                "dev/tests/functional/bootstrap.php"
-            ],
-            [
-                "dev/tests/functional/utils",
-                "dev/tests/functional/utils"
-            ],
-            [
-                "dev/tests/functional/config",
-                "dev/tests/functional/config"
-            ],
-            [
-                "dev/tests/functional/testsuites/Mtf",
-                "dev/tests/functional/testsuites/Mtf"
-            ],
-            [
-                "dev/tests/functional/etc",
-                "dev/tests/functional/etc"
-            ],
-            [
-                "dev/tests/functional/isolation.php",
-                "dev/tests/functional/isolation.php"
-            ],
-            [
-                "dev/tests/functional/.htaccess",
-                "dev/tests/functional/.htaccess"
-            ],
-            [
-                "dev/tests/functional/phpunit.xml.dist",
-                "dev/tests/functional/phpunit.xml.dist"
-            ],
-            [
-                "dev/tests/functional/lib",
-                "dev/tests/functional/lib"
-            ],
-            [
-                "dev/tests/functional/tests",
-                "dev/tests/functional/tests"
-            ],
-            [
-                "dev/tests/functional/.gitignore",
-                "dev/tests/functional/.gitignore"
-            ],
-            [
-                "dev/tests/static/testsuite/Magento",
-                "dev/tests/static/testsuite/Magento"
-            ],
-            [
-                "dev/tests/static/phpunit.xml.dist",
-                "dev/tests/static/phpunit.xml.dist"
-            ],
-            [
-                "dev/tests/static/phpunit-all.xml.dist",
-                "dev/tests/static/phpunit-all.xml.dist"
-            ],
-            [
-                "dev/tests/static/framework",
-                "dev/tests/static/framework"
-            ],
-            [
-                "dev/tests/static/.gitignore",
-                "dev/tests/static/.gitignore"
+                "LICENSE_AFL.txt",
+                "LICENSE_AFL.txt"
             ],
             [
                 "dev/tests/performance/config.php.dist",
                 "dev/tests/performance/config.php.dist"
             ],
             [
-                "dev/tests/performance/testsuite/checkout.jmx",
-                "dev/tests/performance/testsuite/checkout.jmx"
+                "dev/tests/performance/run_scenarios.php",
+                "dev/tests/performance/run_scenarios.php"
             ],
             [
-                "dev/tests/performance/testsuite/category_view.jmx",
-                "dev/tests/performance/testsuite/category_view.jmx"
+                "dev/tests/performance/.gitignore",
+                "dev/tests/performance/.gitignore"
             ],
             [
-                "dev/tests/performance/testsuite/add_to_cart.jmx",
-                "dev/tests/performance/testsuite/add_to_cart.jmx"
-            ],
-            [
-                "dev/tests/performance/testsuite/_samples",
-                "dev/tests/performance/testsuite/_samples"
-            ],
-            [
-                "dev/tests/performance/testsuite/home_page.jmx",
-                "dev/tests/performance/testsuite/home_page.jmx"
+                "dev/tests/performance/framework",
+                "dev/tests/performance/framework"
             ],
             [
                 "dev/tests/performance/testsuite/quick_search.jmx",
                 "dev/tests/performance/testsuite/quick_search.jmx"
             ],
             [
+                "dev/tests/performance/testsuite/backend.jmx",
+                "dev/tests/performance/testsuite/backend.jmx"
+            ],
+            [
+                "dev/tests/performance/testsuite/_samples",
+                "dev/tests/performance/testsuite/_samples"
+            ],
+            [
                 "dev/tests/performance/testsuite/product_view.jmx",
                 "dev/tests/performance/testsuite/product_view.jmx"
+            ],
+            [
+                "dev/tests/performance/testsuite/add_to_cart.jmx",
+                "dev/tests/performance/testsuite/add_to_cart.jmx"
+            ],
+            [
+                "dev/tests/performance/testsuite/reusable",
+                "dev/tests/performance/testsuite/reusable"
+            ],
+            [
+                "dev/tests/performance/testsuite/category_view.jmx",
+                "dev/tests/performance/testsuite/category_view.jmx"
             ],
             [
                 "dev/tests/performance/testsuite/product_edit.jmx",
@@ -357,304 +300,176 @@
                 "dev/tests/performance/testsuite/fixtures"
             ],
             [
-                "dev/tests/performance/testsuite/backend.jmx",
-                "dev/tests/performance/testsuite/backend.jmx"
+                "dev/tests/performance/testsuite/home_page.jmx",
+                "dev/tests/performance/testsuite/home_page.jmx"
             ],
             [
-                "dev/tests/performance/testsuite/reusable",
-                "dev/tests/performance/testsuite/reusable"
+                "dev/tests/performance/testsuite/checkout.jmx",
+                "dev/tests/performance/testsuite/checkout.jmx"
             ],
             [
                 "dev/tests/performance/testsuite/advanced_search.jmx",
                 "dev/tests/performance/testsuite/advanced_search.jmx"
             ],
             [
-                "dev/tests/performance/run_scenarios.php",
-                "dev/tests/performance/run_scenarios.php"
-            ],
-            [
-                "dev/tests/performance/framework",
-                "dev/tests/performance/framework"
-            ],
-            [
-                "dev/tests/performance/.gitignore",
-                "dev/tests/performance/.gitignore"
-            ],
-            [
-                "dev/tests/unit/testsuite/Magento",
-                "dev/tests/unit/testsuite/Magento"
-            ],
-            [
-                "dev/tests/unit/phpunit.xml.dist",
-                "dev/tests/unit/phpunit.xml.dist"
+                "dev/tests/unit/.gitignore",
+                "dev/tests/unit/.gitignore"
             ],
             [
                 "dev/tests/unit/framework",
                 "dev/tests/unit/framework"
             ],
             [
-                "dev/tests/unit/.gitignore",
-                "dev/tests/unit/.gitignore"
+                "dev/tests/unit/phpunit.xml.dist",
+                "dev/tests/unit/phpunit.xml.dist"
             ],
             [
-                "dev/tests/integration/tmp",
-                "dev/tests/integration/tmp"
+                "dev/tests/unit/testsuite/Magento",
+                "dev/tests/unit/testsuite/Magento"
             ],
             [
-                "dev/tests/integration/testsuite/Magento",
-                "dev/tests/integration/testsuite/Magento"
+                "dev/tests/js/jsTestDriver.php.dist",
+                "dev/tests/js/jsTestDriver.php.dist"
+            ],
+            [
+                "dev/tests/js/.gitignore",
+                "dev/tests/js/.gitignore"
+            ],
+            [
+                "dev/tests/js/jsTestDriverOrder.php",
+                "dev/tests/js/jsTestDriverOrder.php"
+            ],
+            [
+                "dev/tests/js/framework",
+                "dev/tests/js/framework"
+            ],
+            [
+                "dev/tests/js/run_js_tests.php",
+                "dev/tests/js/run_js_tests.php"
+            ],
+            [
+                "dev/tests/js/testsuite/mage",
+                "dev/tests/js/testsuite/mage"
+            ],
+            [
+                "dev/tests/js/testsuite/lib",
+                "dev/tests/js/testsuite/lib"
+            ],
+            [
+                "dev/tests/functional/tests",
+                "dev/tests/functional/tests"
+            ],
+            [
+                "dev/tests/functional/utils",
+                "dev/tests/functional/utils"
+            ],
+            [
+                "dev/tests/functional/bootstrap.php",
+                "dev/tests/functional/bootstrap.php"
+            ],
+            [
+                "dev/tests/functional/isolation.php",
+                "dev/tests/functional/isolation.php"
+            ],
+            [
+                "dev/tests/functional/.htaccess",
+                "dev/tests/functional/.htaccess"
+            ],
+            [
+                "dev/tests/functional/etc",
+                "dev/tests/functional/etc"
+            ],
+            [
+                "dev/tests/functional/.gitignore",
+                "dev/tests/functional/.gitignore"
+            ],
+            [
+                "dev/tests/functional/lib",
+                "dev/tests/functional/lib"
+            ],
+            [
+                "dev/tests/functional/testsuites/Mtf",
+                "dev/tests/functional/testsuites/Mtf"
+            ],
+            [
+                "dev/tests/functional/config",
+                "dev/tests/functional/config"
+            ],
+            [
+                "dev/tests/functional/phpunit.xml.dist",
+                "dev/tests/functional/phpunit.xml.dist"
+            ],
+            [
+                "dev/tests/functional/composer.json.dist",
+                "dev/tests/functional/composer.json.dist"
+            ],
+            [
+                "dev/tests/static/phpunit-all.xml.dist",
+                "dev/tests/static/phpunit-all.xml.dist"
+            ],
+            [
+                "dev/tests/static/.gitignore",
+                "dev/tests/static/.gitignore"
+            ],
+            [
+                "dev/tests/static/framework",
+                "dev/tests/static/framework"
+            ],
+            [
+                "dev/tests/static/phpunit.xml.dist",
+                "dev/tests/static/phpunit.xml.dist"
+            ],
+            [
+                "dev/tests/static/testsuite/Magento",
+                "dev/tests/static/testsuite/Magento"
             ],
             [
                 "dev/tests/integration/etc",
                 "dev/tests/integration/etc"
             ],
             [
-                "dev/tests/integration/phpunit.xml.dist",
-                "dev/tests/integration/phpunit.xml.dist"
+                "dev/tests/integration/.gitignore",
+                "dev/tests/integration/.gitignore"
             ],
             [
                 "dev/tests/integration/framework",
                 "dev/tests/integration/framework"
             ],
             [
-                "dev/tests/integration/.gitignore",
-                "dev/tests/integration/.gitignore"
+                "dev/tests/integration/tmp",
+                "dev/tests/integration/tmp"
             ],
             [
-                "LICENSE.txt",
-                "LICENSE.txt"
+                "dev/tests/integration/phpunit.xml.dist",
+                "dev/tests/integration/phpunit.xml.dist"
             ],
             [
-                "app/design/install",
-                "app/design/install"
+                "dev/tests/integration/testsuite/Magento",
+                "dev/tests/integration/testsuite/Magento"
             ],
             [
-                "app/bootstrap.php",
-                "app/bootstrap.php"
+                "dev/shell",
+                "dev/shell"
             ],
             [
-                "app/autoload.php",
-                "app/autoload.php"
+                "dev/.htaccess",
+                "dev/.htaccess"
             ],
             [
-                "app/code/Zend",
-                "app/code/Zend"
-            ],
-            [
-                "app/etc/local.xml.template",
-                "app/etc/local.xml.template"
-            ],
-            [
-                "app/etc/di.xml",
-                "app/etc/di.xml"
-            ],
-            [
-                "app/.htaccess",
-                "app/.htaccess"
-            ],
-            [
-                "app/functions.php",
-                "app/functions.php"
+                "dev/tools",
+                "dev/tools"
             ],
             [
                 ".htaccess",
                 ".htaccess"
             ],
             [
-                "index.php",
-                "index.php"
-            ],
-            [
-                "CONTRIBUTING.md",
-                "CONTRIBUTING.md"
-            ],
-            [
-                ".travis.yml",
-                ".travis.yml"
-            ],
-            [
-                "lib/internal/PEAR",
-                "lib/internal/PEAR"
-            ],
-            [
-                "lib/internal/JSMin",
-                "lib/internal/JSMin"
-            ],
-            [
-                "lib/internal/LinLibertineFont",
-                "lib/internal/LinLibertineFont"
-            ],
-            [
-                "lib/internal/CardinalCommerce",
-                "lib/internal/CardinalCommerce"
-            ],
-            [
-                "lib/internal/Less",
-                "lib/internal/Less"
-            ],
-            [
-                "lib/internal/Credis",
-                "lib/internal/Credis"
-            ],
-            [
-                "lib/internal/phpseclib",
-                "lib/internal/phpseclib"
-            ],
-            [
-                "lib/internal/Symfony",
-                "lib/internal/Symfony"
-            ],
-            [
-                "lib/internal/Zend",
-                "lib/internal/Zend"
-            ],
-            [
-                "lib/internal/Cm",
-                "lib/internal/Cm"
-            ],
-            [
-                "lib/web/jquery",
-                "lib/web/jquery"
-            ],
-            [
-                "lib/web/fonts",
-                "lib/web/fonts"
-            ],
-            [
-                "lib/web/dnd.js",
-                "lib/web/dnd.js"
-            ],
-            [
-                "lib/web/app-config.js",
-                "lib/web/app-config.js"
-            ],
-            [
-                "lib/web/date-format-normalizer.js",
-                "lib/web/date-format-normalizer.js"
-            ],
-            [
-                "lib/web/modernizr",
-                "lib/web/modernizr"
-            ],
-            [
-                "lib/web/scriptaculous",
-                "lib/web/scriptaculous"
-            ],
-            [
-                "lib/web/ko",
-                "lib/web/ko"
-            ],
-            [
-                "lib/web/extjs",
-                "lib/web/extjs"
-            ],
-            [
-                "lib/web/requirejs",
-                "lib/web/requirejs"
-            ],
-            [
-                "lib/web/moment.js",
-                "lib/web/moment.js"
-            ],
-            [
-                "lib/web/blank.html",
-                "lib/web/blank.html"
-            ],
-            [
-                "lib/web/i18n",
-                "lib/web/i18n"
-            ],
-            [
-                "lib/web/spacer.gif",
-                "lib/web/spacer.gif"
-            ],
-            [
-                "lib/web/varien",
-                "lib/web/varien"
-            ],
-            [
-                "lib/web/prototype",
-                "lib/web/prototype"
-            ],
-            [
-                "lib/web/lib",
-                "lib/web/lib"
-            ],
-            [
-                "lib/web/underscore.js",
-                "lib/web/underscore.js"
-            ],
-            [
-                "lib/web/tiny_mce",
-                "lib/web/tiny_mce"
-            ],
-            [
-                "lib/web/matchMedia.js",
-                "lib/web/matchMedia.js"
-            ],
-            [
-                "lib/web/selectivizr.js",
-                "lib/web/selectivizr.js"
-            ],
-            [
-                "lib/web/images",
-                "lib/web/images"
-            ],
-            [
-                "lib/web/css",
-                "lib/web/css"
-            ],
-            [
-                "lib/web/bootstrap.js",
-                "lib/web/bootstrap.js"
-            ],
-            [
-                "lib/web/mage",
-                "lib/web/mage"
-            ],
-            [
-                "lib/.htaccess",
-                "lib/.htaccess"
-            ],
-            [
-                "var/.htaccess",
-                "var/.htaccess"
+                "pub/cron.php",
+                "pub/cron.php"
             ],
             [
                 "pub/static.php",
                 "pub/static.php"
-            ],
-            [
-                "pub/errors",
-                "pub/errors"
-            ],
-            [
-                "pub/media/downloadable/.htaccess",
-                "pub/media/downloadable/.htaccess"
-            ],
-            [
-                "pub/media/customer/.htaccess",
-                "pub/media/customer/.htaccess"
-            ],
-            [
-                "pub/media/.htaccess",
-                "pub/media/.htaccess"
-            ],
-            [
-                "pub/media/theme_customization/.htaccess",
-                "pub/media/theme_customization/.htaccess"
-            ],
-            [
-                "pub/get.php",
-                "pub/get.php"
-            ],
-            [
-                "pub/static/.htaccess",
-                "pub/static/.htaccess"
-            ],
-            [
-                "pub/cron.php",
-                "pub/cron.php"
             ],
             [
                 "pub/opt",
@@ -665,24 +480,204 @@
                 "pub/.htaccess"
             ],
             [
+                "pub/get.php",
+                "pub/get.php"
+            ],
+            [
+                "pub/errors",
+                "pub/errors"
+            ],
+            [
                 "pub/index.php",
                 "pub/index.php"
             ],
             [
-                "LICENSE_AFL.txt",
-                "LICENSE_AFL.txt"
+                "pub/static/.htaccess",
+                "pub/static/.htaccess"
             ],
             [
-                ".htaccess.sample",
-                ".htaccess.sample"
+                "pub/media/theme_customization/.htaccess",
+                "pub/media/theme_customization/.htaccess"
+            ],
+            [
+                "pub/media/customer/.htaccess",
+                "pub/media/customer/.htaccess"
+            ],
+            [
+                "pub/media/.htaccess",
+                "pub/media/.htaccess"
+            ],
+            [
+                "pub/media/downloadable/.htaccess",
+                "pub/media/downloadable/.htaccess"
             ],
             [
                 ".gitignore",
                 ".gitignore"
             ],
             [
-                "setup",
-                "setup"
+                "lib/.htaccess",
+                "lib/.htaccess"
+            ],
+            [
+                "lib/internal/Credis",
+                "lib/internal/Credis"
+            ],
+            [
+                "lib/internal/Symfony",
+                "lib/internal/Symfony"
+            ],
+            [
+                "lib/internal/PEAR",
+                "lib/internal/PEAR"
+            ],
+            [
+                "lib/internal/Less",
+                "lib/internal/Less"
+            ],
+            [
+                "lib/internal/Cm",
+                "lib/internal/Cm"
+            ],
+            [
+                "lib/internal/CardinalCommerce",
+                "lib/internal/CardinalCommerce"
+            ],
+            [
+                "lib/internal/Zend",
+                "lib/internal/Zend"
+            ],
+            [
+                "lib/internal/phpseclib",
+                "lib/internal/phpseclib"
+            ],
+            [
+                "lib/internal/JSMin",
+                "lib/internal/JSMin"
+            ],
+            [
+                "lib/internal/LinLibertineFont",
+                "lib/internal/LinLibertineFont"
+            ],
+            [
+                "lib/web/selectivizr.js",
+                "lib/web/selectivizr.js"
+            ],
+            [
+                "lib/web/dnd.js",
+                "lib/web/dnd.js"
+            ],
+            [
+                "lib/web/requirejs-config.js",
+                "lib/web/requirejs-config.js"
+            ],
+            [
+                "lib/web/mage",
+                "lib/web/mage"
+            ],
+            [
+                "lib/web/images",
+                "lib/web/images"
+            ],
+            [
+                "lib/web/extjs",
+                "lib/web/extjs"
+            ],
+            [
+                "lib/web/bootstrap.js",
+                "lib/web/bootstrap.js"
+            ],
+            [
+                "lib/web/varien",
+                "lib/web/varien"
+            ],
+            [
+                "lib/web/tiny_mce",
+                "lib/web/tiny_mce"
+            ],
+            [
+                "lib/web/app-config.js",
+                "lib/web/app-config.js"
+            ],
+            [
+                "lib/web/i18n",
+                "lib/web/i18n"
+            ],
+            [
+                "lib/web/matchMedia.js",
+                "lib/web/matchMedia.js"
+            ],
+            [
+                "lib/web/requirejs",
+                "lib/web/requirejs"
+            ],
+            [
+                "lib/web/lib",
+                "lib/web/lib"
+            ],
+            [
+                "lib/web/modernizr",
+                "lib/web/modernizr"
+            ],
+            [
+                "lib/web/scriptaculous",
+                "lib/web/scriptaculous"
+            ],
+            [
+                "lib/web/prototype",
+                "lib/web/prototype"
+            ],
+            [
+                "lib/web/fonts",
+                "lib/web/fonts"
+            ],
+            [
+                "lib/web/blank.html",
+                "lib/web/blank.html"
+            ],
+            [
+                "lib/web/spacer.gif",
+                "lib/web/spacer.gif"
+            ],
+            [
+                "lib/web/jquery",
+                "lib/web/jquery"
+            ],
+            [
+                "lib/web/css",
+                "lib/web/css"
+            ],
+            [
+                "lib/web/underscore.js",
+                "lib/web/underscore.js"
+            ],
+            [
+                "index.php",
+                "index.php"
+            ],
+            [
+                "var/.htaccess",
+                "var/.htaccess"
+            ],
+            [
+                "php.ini.sample",
+                "php.ini.sample"
+            ],
+            [
+                "README.md",
+                "README.md"
+            ],
+            [
+                "CHANGELOG.md",
+                "CHANGELOG.md"
+            ],
+            [
+                "CONTRIBUTING.md",
+                "CONTRIBUTING.md"
+            ],
+            [
+                "LICENSE.html",
+                "LICENSE.html"
             ]
         ]
     },
