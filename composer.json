@@ -108,6 +108,7 @@
             "url": "http://packages.magento.com/"
         }
     ],
+    "minimum-stability": "dev",
     "require-dev": {
         "phpunit/phpunit": "4.1.0"
     },
