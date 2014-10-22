@@ -141,6 +141,7 @@
         "tinymce/tinymce": "3.4.7"
     },
     "extra": {
+        "magento-root-dir": "./",
         "component_paths": {
             "zendframework/zend-eventmanager": "lib/internal/Zend/EventManager",
             "zendframework/zend-di": "lib/internal/Zend/Di",
