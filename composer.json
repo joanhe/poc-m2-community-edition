@@ -1,5 +1,5 @@
 {
-    "name": "magento/product-community-edition",
+    "name": "magento/poc-m2-community-edition",
     "description": "eCommerce Platform for Growth (Community Edition)",
     "type": "magento2-component",
     "version": "0.1.0-alpha95",
