@@ -333,6 +333,10 @@
                 "app/etc/di.xml"
             ],
             [
+                "app/code/NewLib",
+                "app/code/NewLib"
+            ],
+            [
                 "app/.htaccess",
                 "app/.htaccess"
             ],
