@@ -85,10 +85,6 @@
                 "php.ini.sample"
             ],
             [
-                "README.md",
-                "README.md"
-            ],
-            [
                 "CONTRIBUTOR_LICENSE_AGREEMENT.html",
                 "CONTRIBUTOR_LICENSE_AGREEMENT.html"
             ],
@@ -563,10 +559,6 @@
             [
                 ".htaccess.sample",
                 ".htaccess.sample"
-            ],
-            [
-                ".gitignore",
-                ".gitignore"
             ],
             [
                 "setup",
