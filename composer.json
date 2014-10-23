@@ -325,10 +325,6 @@
                 "app/autoload.php"
             ],
             [
-                "app/code/Zend",
-                "app/code/Zend"
-            ],
-            [
                 "app/etc/local.xml.template",
                 "app/etc/local.xml.template"
             ],
