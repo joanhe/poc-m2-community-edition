@@ -341,14 +341,6 @@
                 "app/functions.php"
             ],
             [
-                ".htaccess",
-                ".htaccess"
-            ],
-            [
-                "index.php",
-                "index.php"
-            ],
-            [
                 "CONTRIBUTING.md",
                 "CONTRIBUTING.md"
             ],
