@@ -329,8 +329,8 @@
                 "app/etc/di.xml"
             ],
             [
-                "app/code/NewLib",
-                "app/code/NewLib"
+                "app/code/Zend",
+                "app/code/Zend"
             ],
             [
                 "app/.htaccess",
