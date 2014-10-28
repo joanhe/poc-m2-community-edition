@@ -321,6 +321,10 @@
                 "app/autoload.php"
             ],
             [
+                "app/code/Zend",
+                "app/code/Zend"
+            ],
+            [
                 "app/etc/local.xml.template",
                 "app/etc/local.xml.template"
             ],
@@ -329,16 +333,20 @@
                 "app/etc/di.xml"
             ],
             [
-                "app/code/Zend",
-                "app/code/Zend"
-            ],
-            [
                 "app/.htaccess",
                 "app/.htaccess"
             ],
             [
                 "app/functions.php",
                 "app/functions.php"
+            ],
+            [
+                ".htaccess",
+                ".htaccess"
+            ],
+            [
+                "index.php",
+                "index.php"
             ],
             [
                 "CONTRIBUTING.md",
@@ -554,7 +562,7 @@
             ],
             [
                 "setup",
-                "../setup"
+                "setup"
             ]
         ]
     }
