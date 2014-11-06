@@ -27,6 +27,9 @@
  */
 namespace Magento\Test\Helper;
 
+use Magento\Framework\App\Bootstrap;
+use Magento\Framework\App\Filesystem\DirectoryList;
+
 class BootstrapTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -50,9 +53,9 @@ class BootstrapTest extends \PHPUnit_Framework_TestCase
      * @var array
      */
     protected $_fixtureInitParams = array(
-        \Magento\Framework\App\Filesystem::PARAM_APP_DIRS => array(
-            \Magento\Framework\App\Filesystem::CONFIG_DIR => array('path' => __DIR__),
-            \Magento\Framework\App\Filesystem::VAR_DIR => array('path' => __DIR__)
+        Bootstrap::INIT_PARAM_FILESYSTEM_DIR_PATHS => array(
+            DirectoryList::CONFIG => array('path' => __DIR__),
+            DirectoryList::VAR_DIR => array('path' => __DIR__)
         )
     );
 
@@ -60,7 +63,7 @@ class BootstrapTest extends \PHPUnit_Framework_TestCase
     {
         $this->_application = $this->getMock(
             'Magento\TestFramework\Application',
-            array('getInstallDir', 'getInitParams', 'reinitialize', 'run'),
+            array('getTempDir', 'getInitParams', 'reinitialize', 'run'),
             array(),
             '',
             false
@@ -159,10 +162,10 @@ class BootstrapTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testGetAppInstallDir()
+    public function testGetAppTempDir()
     {
-        $this->_application->expects($this->once())->method('getInstallDir')->will($this->returnValue(__DIR__));
-        $this->assertEquals(__DIR__, $this->_object->getAppInstallDir());
+        $this->_application->expects($this->once())->method('getTempDir')->will($this->returnValue(__DIR__));
+        $this->assertEquals(__DIR__, $this->_object->getAppTempDir());
     }
 
     public function testGetAppInitParams()
@@ -175,12 +178,6 @@ class BootstrapTest extends \PHPUnit_Framework_TestCase
             $this->returnValue($this->_fixtureInitParams)
         );
         $this->assertEquals($this->_fixtureInitParams, $this->_object->getAppInitParams());
-    }
-
-    public function testGetDbVendorName()
-    {
-        $this->_bootstrap->expects($this->once())->method('getDbVendorName')->will($this->returnValue('mysql'));
-        $this->assertEquals('mysql', $this->_object->getDbVendorName());
     }
 
     public function testReinitialize()

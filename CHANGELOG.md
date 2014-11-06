@@ -1,3 +1,176 @@
+0.1.0-alpha102
+=============
+* Fixed bugs:
+	* Fixed an issue where the categories tree was not displayed when adding a new category during product creation
+	* Fixed an issue where the Template field on the New Email Template page was labeled as required
+	* Fixed minor UI issues in Multiple Addresses Checkout for a desktop
+	* Fixed minor UI issues with Widgets on the storefront
+	* Fixed minor UI issues with pages printing view on the storefront
+	* Fixed minor UI issues in items Gift message on the Order View frontend page
+	* Fixed an issue in the Admin panel where no message was displayed after adding a product to cart with quantity exceeding the available quantity)
+* Framework improvements:
+	* To enhance the readability of tables for screen readers, added the <caption> tag and the “scope” attribute for tables
+	* Added customer module interfaces
+	* Created the ability to generate API documentation
+* Added the following functional tests:
+	* Create gift message in the Admin panel
+	* Delete term
+	* Product type switching when editing
+	* Re-authorize tokens for the Integration
+	* Revoke all access tokens for admin without tokens
+	* Update custom order status
+	* Update a product from a mini shopping cart
+* WebApi Framework improvements:
+	* Added Web API support to add/override matching identifier parameter in the body from URL
+* Documentation:
+	* Added README files with module description for the following modules:
+		* Authorizenet
+		* Centinel
+		* Customer
+		* CustomerImportExport
+		* Dhl
+		* Fedex
+		* OfflinePayments
+		* OfflineShipping
+		* Ogone
+		* PayPalRecurringPayment
+		* Payment
+		* Paypal
+		* ProductAlert
+		* RecurringPayment
+		* Sendfriend
+		* Shipping
+		* Ups
+		* Usps
+		* Wishlist
+* Container-Based Page Layout:
+    * Distributed the responsibility of View\Layout between three classes (PageLayout, PageConfig, GenericLayout)
+    * Refactored controller actions to use ResultInterface objects:
+        * Catalog
+        * Backend
+
+0.1.0-alpha101
+=============
+ * Framework improvements:
+  * Updated the Service infrastructure to support Module Service Contract based approach
+  * Added new base classes in the Service infrastructure lib to support extensible Data Interfaces
+  * Updated the WebApi framework serialization (for SOAP and REST) to process requests based on Data Interfaces and removed dependency on Data Objects
+  * Added base class for Data Interface based builders and implemented a code generator for the same
+ * File system improvements: 
+   * List of available application directories is complete now and defined in the \Magento\Framework\Filesystem\DirectoryList and the \Magento\Framework\App\Filesystem\DirectoryList classes. There is no ability to extend the list in configuration
+   * Directory paths  can be changed using environment/bootstrap
+   * Information about necessary permissions (writable, readable) belongs to Setup Application, Magento Application does not possess this info and does not verify. Setup Application performs permissions validation
+   * Unnecessary writable permissions are validated by Setup Application after installation and corresponding message is displayed to the user
+ * Functional tests:
+  * Configure a product in a customer wishlist  in the Admin panel 
+  * Configure a product in a customer wishlist on the storefront 
+  * Create terms and conditions 
+  * Manage products stock 
+  * Move a product from a shopping card to a wishlist 
+  * Un-assign custom order status 
+  * Update terms and conditions 
+  * Update URL rewrites after moving/deleting a category 
+  * Update URL rewrites after changing category assignment for a product
+  * View customer wishlist  in the Admin panel
+  * Tax calculation test
+  * Cross border trade setting
+ * Documentation:
+  * Code documentation:
+    * Added codeblock for the Checkout module
+  * Added README files with module description for the following modules:
+    * Backend
+    * Backup
+    * Cron
+    * Log
+    * PageCache
+    * Store
+    * Checkout
+    * GiftMessage
+    * Eav
+    * Multishipping
+    * CheckoutAgreement
+    * AdminNotification
+    * Authz
+    * Connect
+    * CurrencySymbol
+    * Directory
+    * Email
+    * Integration
+    * Service
+    * User
+    * Webapi
+    * Sales
+    * Tax
+    * Weee
+  * Added README files with component description for the following framework components:
+    * Magento\Framework\App\Cache
+    * Magento\Framework\Archive
+    * Magento\Framework\Backup
+    * Magento\Framework\Convert
+    * Magento\Framework\Encryption
+    * Magento\Framework\File
+    * Magento\Framework\Filesystem
+    * Magento\Framework\Flag
+    * Magento\Framework\Image
+    * Magento\Framework\Math
+    * Magento\Framework\Option
+    * Magento\Framework\Profiler
+    * Magento\Framework\Shell
+    * Magento\Framework\Stdlib
+    * Magento\Framework\Validator
+ * Performance improvements:
+  * Reduced checkout response time by loading only current checkout step 
+  * Reduced the number of AJAX calls on checkout steps 
+  * Improved performance on the billing and shipping checkout steps 
+  * Improved performance in certain areas by loading translation data from cache 
+  * Removed transactions from visitors logging 
+  * Fixed classmap generator to consider namespaces 
+  * Eliminated a redundant query for category tree rendering 
+  * Optimized StoreManager and Storage performance 
+  * Optimized Object Manager 
+ * Fixed bugs:
+  * Fixed an issue where partial invoices and partial credit memos contained incorrect customer's tax details 
+  * Fixed an issue where a PHP fatal error occurred when logging in during checkout to order a product with FPT 
+  * Fixed an issue where FPT was not calculated in reorders 
+  * Fixed an issue where there was a duplicated Administrator role after installation 
+  * Fixed an issue where the Try Again button was disabled after entering the incorrect data during installation 
+  * Fixed an issue where the "Application is not installed yet" error was thrown instead of redirecting to the Installation Wizard in the developer mode
+  * Fixed an issue where an error was thrown during installation with db_prefix option 
+  * Fixed an issue where the SQL query was not optimized for product search ('catalogsearch_query')
+  * Fixed an issue where the wrong message was displayed after changing customer password on the storefront 
+  * Fixed an issue where Newsletter preview led to an empty page 
+  * Fixed an issue where a new search term was not displayed in suggested results 
+  * Fixed an issue where no results were found for the Products Viewed report 
+  * Fixed an issue where no results were found for Coupons reports 
+  * Fixed an issue with incremental Qty setting 
+  * Fixed an issue with allowing importing of negative weight values 
+  * Fixed an issue with Inventory - Only X left Treshold being not dependent on Qty for Item's Status to Become Out of Stock 
+  * Fixed an issue where the "Catalog Search Index index was rebuilt." message was displayed when reindexing the Catalog Search index  
+ * Search module:
+  * Integrated the Search library to the advanced search functionality 
+    * Substituted the old logic of the EAV attributes search by Advanced Search 
+    * Introduced mappers for MySQL adapter 
+    * Restored  the currency calculation functionality 
+    * Fixed sorting by relevance in quick search and advanced search 
+  * Integrated the Search library into the search widget functionality 
+    * Removed the dependency on the catalogsearch_result table 
+    * Substituted the old logic of EAV attributes by Quick search APIs 
+  * Search modularity: 
+    * Removed circular dependency between Catalog and  Catalog Search 
+    * Removed exceeded dependencies of the Search module
+
+0.1.0-alpha100
+=============
+ * Added the following functional tests:
+   * Add related products
+   * Assign custom order status
+   * Change customer password
+   * Create credit memo for offline payment methods
+   * Product type switching on creation
+   * Sales invoice report
+   * Sales refund report
+   * Update newsletter template
+
 0.1.0-alpha99
 =============
  * Released Performance Toolkit
@@ -5,7 +178,6 @@
    * [#665](https://github.com/magento/magento2/issues/665) -- Main menu event in wrong area
    * [#666](https://github.com/magento/magento2/pull/666) -- Update di.xml
    * [#602](https://github.com/magento/magento2/issues/602) -- Magento\Sales\Model\Order::getFullTaxInfo() incorrectly combines percentages
-   * [#673](https://github.com/magento/magento2/issues/673) -- Fixed fatal error during installation
  * Functional tests:
    * Updated API-functional test for Customer and Address metadata service
    * Add cross sell
@@ -46,6 +218,7 @@
    * Fixed the link to the license agreement in web installer
    * Fixed the web installation wizard which was stuck at 96%
  * Fixed bugs:
+   * Fixed fatal error during installation
    * Fixed an issue where newly created attribute was always added to the Product Details tab
    * Fixed an issue where it was impossible to change the Stock Availability status of a product from the Advanced Inventory tab
    * Fixed an issue where the Stock Status value changed from In Stock to Out of Stock if quantity was not specified
@@ -399,7 +572,7 @@
    * Placing the order on frontend if enter in the street address line 1 and 2 255 symbols
    * Using  @357.farm domain emails in registration form
    * Validation for country_id/region_id and percentage_rate during Tax Rate creation
-   * Declaration of getSortOrders in Magento\Framework\Service\V1\Data\SearchCriteria
+   * Declaration of getSortOrders in Magento\Framework\Api\SearchCriteria
    * Order cancellation for online payment methods
    * Order online processing for Authorize.net Direct Post
    * Backend grids while search

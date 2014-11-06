@@ -25,11 +25,10 @@
 namespace Magento\ConfigurableProduct\Test\Fixture\ConfigurableProductInjectable;
 
 /**
- * Class CheckoutData
- * Data for fill product form on frontend
+ * Data for fill product form on frontend.
  *
  * Data keys:
- *  - preset (Checkout data verification preset name)
+ *  - preset (Checkout data verification preset name).
  */
 class CheckoutData extends \Magento\Catalog\Test\Fixture\CatalogProductSimple\CheckoutData
 {
@@ -38,6 +37,8 @@ class CheckoutData extends \Magento\Catalog\Test\Fixture\CatalogProductSimple\Ch
      *
      * @param $name
      * @return array|null
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     protected function getPreset($name)
     {
@@ -54,12 +55,32 @@ class CheckoutData extends \Magento\Catalog\Test\Fixture\CatalogProductSimple\Ch
                             'value' => 'option_key_1',
                         ]
                     ],
-                    'qty' => 3
                 ],
+                'qty' => 3,
                 'cartItem' => [
                     'price' => 172,
                     'qty' => 3,
                     'subtotal' => 516
+                ]
+            ],
+            'forUpdateMiniShoppingCart' => [
+                'options' => [
+                    'configurable_options' => [
+                        [
+                            'title' => 'attribute_key_0',
+                            'value' => 'option_key_1',
+                        ],
+                        [
+                            'title' => 'attribute_key_1',
+                            'value' => 'option_key_0',
+                        ]
+                    ],
+                ],
+                'qty' => 1,
+                'cartItem' => [
+                    'price' => 172,
+                    'qty' => 1,
+                    'subtotal' => 172
                 ]
             ],
             'two_options' => [
@@ -88,7 +109,45 @@ class CheckoutData extends \Magento\Catalog\Test\Fixture\CatalogProductSimple\Ch
                     'price' => 102,
                 ]
             ],
-            'two_new_options_with_special_price' =>[
+            'two_attributes' => [
+                'options' => [
+                    'configurable_options' => [
+                        [
+                            'title' => 'attribute_key_0',
+                            'value' => 'option_key_0',
+                        ],
+                        [
+                            'title' => 'attribute_key_1',
+                            'value' => 'option_key_0',
+                        ]
+                    ]
+                ],
+                'cartItem' => [
+                    'price' => 112,
+                ]
+            ],
+            'three_attributes' => [
+                'options' => [
+                    'configurable_options' => [
+                        [
+                            'title' => 'attribute_key_0',
+                            'value' => 'option_key_0',
+                        ],
+                        [
+                            'title' => 'attribute_key_1',
+                            'value' => 'option_key_0',
+                        ],
+                        [
+                            'title' => 'attribute_key_2',
+                            'value' => 'option_key_0',
+                        ]
+                    ]
+                ],
+                'cartItem' => [
+                    'price' => 112,
+                ]
+            ],
+            'two_new_options_with_special_price' => [
                 'options' => [
                     'configurable_options' => [
                         [
@@ -113,6 +172,17 @@ class CheckoutData extends \Magento\Catalog\Test\Fixture\CatalogProductSimple\Ch
                 'cartItem' => [
                     'price' => 101,
                 ]
+            ],
+            'with_one_option' => [
+                'options' => [
+                    'configurable_options' => [
+                        [
+                            'title' => 'attribute_key_0',
+                            'value' => 'option_key_0',
+                        ],
+                    ],
+                ],
+                'qty' => 1,
             ],
         ];
         return isset($presets[$name]) ? $presets[$name] : null;

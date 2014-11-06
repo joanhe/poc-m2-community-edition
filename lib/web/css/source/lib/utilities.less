@@ -22,17 +22,17 @@
 //  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 //  */
 
-.debug() {
-    outline:2px dotted red;
-}
-
-.margin-top-rem(@value) {
+.margin-top-rem(
+    @value
+) when not (@value = false) and not (@value = '') {
     @_value: unit(@value);
     margin-top: @_value * 1px;
     margin-top: @_value * 1rem / @font-rem-ratio;
 }
 
-.margin-bottom-rem(@value) {
+.margin-bottom-rem(
+    @value
+) when not (@value = false) and not (@value = '') {
     @_value: unit(@value);
     margin-bottom: @_value * 1px;
     margin-bottom: @_value * 1rem / @font-rem-ratio;
@@ -43,13 +43,17 @@
     .margin-bottom-rem(@val-bottom);
 }
 
-.padding-top-rem(@value) {
+.padding-top-rem(
+    @value
+) when not (@value = false) and not (@value = '') {
     @_value: unit(@value);
     padding-top: @_value * 1px;
     padding-top: @_value * 1rem / @font-rem-ratio;
 }
 
-.padding-bottom-rem(@value) {
+.padding-bottom-rem(
+    @value
+) when not (@value = false) and not (@value = '') {
     @_value: unit(@value);
     padding-bottom: @_value * 1px;
     padding-bottom: @_value * 1rem / @font-rem-ratio;
@@ -173,17 +177,6 @@
     @_background-gradient
 ) when (@_background-gradient-direction = vertical) and (@_background-gradient = true) {
     #gradient > .vertical(@_background-gradient-start-color, @_background-gradient-end-color);
-}
-
-//
-//    WebKit-style focus
-//--------------------------------------
-.tab-focus() {
-    // Default
-    outline: thin dotted;
-    // WebKit
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
 }
 
 //

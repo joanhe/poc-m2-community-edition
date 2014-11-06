@@ -433,7 +433,6 @@
         <custom_options>
             <attribute_code>custom_options</attribute_code>
             <backend_type>virtual</backend_type>
-            <group>product_info_tabs_customer_options</group>
             <is_required>0</is_required>
             <group>customer-options</group>
             <fixture>Magento\Catalog\Test\Fixture\CatalogProductSimple\CustomOptions</fixture>
@@ -470,11 +469,26 @@
             <source>Magento\Catalog\Test\Fixture\CatalogProductSimple\CrossSellProducts</source>
         </cross_sell_products>
         <up_sell_products>
-            <attribute_code>cross_sell_products</attribute_code>
+            <attribute_code>up_sell_products</attribute_code>
             <backend_type>virtual</backend_type>
-            <group>crosssells</group>
+            <group>upsells</group>
             <source>Magento\Catalog\Test\Fixture\CatalogProductSimple\UpSellProducts</source>
         </up_sell_products>
+        <related_products>
+            <attribute_code>related_products</attribute_code>
+            <backend_type>virtual</backend_type>
+            <group>related-products</group>
+            <source>Magento\Catalog\Test\Fixture\CatalogProductSimple\RelatedProducts</source>
+        </related_products>
+        <recurring_payment>
+            <attribute_code>recurring_payment</attribute_code>
+            <backend_type>virtual</backend_type>
+            <group>advanced-pricing</group>
+        </recurring_payment>
+        <is_virtual>
+            <attribute_code>is_virtual</attribute_code>
+            <backend_type>virtual</backend_type>
+        </is_virtual>
     </fields>
     <data_set>
         <sku></sku>

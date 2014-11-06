@@ -68,8 +68,8 @@ class CheckoutData extends \Magento\Catalog\Test\Fixture\CatalogProductSimple\Ch
                             ]
                         ]
                     ],
-                    'qty' => 2
                 ],
+                'qty' => 2,
                 'cartItem' => [
                     'price' => 100,
                     'qty' => 2,
@@ -87,11 +87,30 @@ class CheckoutData extends \Magento\Catalog\Test\Fixture\CatalogProductSimple\Ch
                             ]
                         ]
                     ],
-                    'qty' => 2
                 ],
+                'qty' => 2,
                 'cartItem' => [
                     'price' => 756,
                     'qty' => 2,
+                    'subtotal' => 756
+                ]
+            ],
+            'forUpdateMiniShoppingCart' => [
+                'options' => [
+                    'bundle_options' => [
+                        [
+                            'title' => 'Drop-down Option',
+                            'type' => 'Drop-down',
+                            'value' => [
+                                'name' => 'Simple Product'
+                            ]
+                        ]
+                    ],
+                ],
+                'qty' => 1,
+                'cartItem' => [
+                    'price' => 756,
+                    'qty' => 1,
                     'subtotal' => 756
                 ]
             ],
