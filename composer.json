@@ -1,5 +1,5 @@
 {
-    "name": "magento/skeleton",
+    "name": "magento/skeleton-community-edition",
     "description": "Magento 2 Skeleton",
     "type": "magento2-component",
     "version": "0.1.0-alpha102",
