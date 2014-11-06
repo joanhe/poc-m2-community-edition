@@ -57,11 +57,12 @@ class CheckoutData implements FixtureInterface
     public function __construct(array $params, array $data = [])
     {
         $this->params = $params;
-        $this->data = isset($data['preset']) ? $this->getPreset($data['preset']) : [];
-
-        if (isset($data['data'])) {
-            $this->data = array_replace_recursive($this->data, $data['data']);
+        $preset = [];
+        if (isset($data['preset'])) {
+            $preset = $this->getPreset($data['preset']);
+            unset($data['preset']);
         }
+        $this->data = empty($preset) ? $data : array_replace_recursive($preset, $data);
     }
 
     /**
@@ -102,6 +103,8 @@ class CheckoutData implements FixtureInterface
      *
      * @param string $name
      * @return array|null
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     protected function getPreset($name)
     {
@@ -118,11 +121,30 @@ class CheckoutData implements FixtureInterface
                             'value' => 'Content option %isolation%',
                         ]
                     ],
-                    'qty' => 1
                 ],
+                'qty' => 1,
                 'cartItem' => [
                     'price' => 340,
                     'subtotal' => 340
+                ]
+            ],
+            'forUpdateMiniShoppingCart' => [
+                'options' => [
+                    'custom_options' => [
+                        [
+                            'title' => 'attribute_key_0',
+                            'value' => 'option_key_1'
+                        ],
+                        [
+                            'title' => 'attribute_key_1',
+                            'value' => 'Content option %isolation%',
+                        ]
+                    ],
+                ],
+                'qty' => 2,
+                'cartItem' => [
+                    'price' => 370,
+                    'subtotal' => 740
                 ]
             ],
             'options-suite' => [
@@ -168,15 +190,11 @@ class CheckoutData implements FixtureInterface
                 ]
             ],
             'order_default' => [
-                'options' => [
-                    'qty' => 1
-                ],
+                'qty' => 1,
                 'cartItem' => []
             ],
             'two_products' => [
-                'options' => [
-                    'qty' => 2
-                ],
+                'qty' => 2,
                 'cartItem' => [
                     'price' => 100,
                     'subtotal' => 200
@@ -186,8 +204,8 @@ class CheckoutData implements FixtureInterface
                 'qty' => 900
             ],
             'order_custom_price' => [
+                'qty' => 3,
                 'checkout_data' => [
-                    'qty' => 3,
                     'use_custom_price' => "Yes",
                     'custom_price' => 100,
                 ],

@@ -25,8 +25,9 @@
  */
 namespace Magento\Setup\Module;
 
-use Magento\Filesystem\Directory\ReadInterface;
-use Magento\Filesystem\Filesystem;
+use Magento\Framework\Filesystem\Directory\ReadInterface;
+use Magento\Framework\Filesystem;
+use Magento\Framework\App\Filesystem\DirectoryList;
 
 class Dir
 {
@@ -42,7 +43,7 @@ class Dir
      */
     public function __construct(Filesystem $filesystem)
     {
-        $this->_modulesDirectory = $filesystem->getDirectoryRead(\Magento\Framework\App\Filesystem::MODULES_DIR);
+        $this->_modulesDirectory = $filesystem->getDirectoryRead(DirectoryList::MODULES);
     }
 
     /**
@@ -64,7 +65,6 @@ class Dir
         }
 
         $result = $this->_modulesDirectory->getAbsolutePath($path);
-
         return $result;
     }
 }

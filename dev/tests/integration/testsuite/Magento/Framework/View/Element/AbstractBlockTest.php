@@ -23,8 +23,6 @@
  */
 namespace Magento\Framework\View\Element;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
-
 /**
  * @magentoAppIsolation enabled
  */
@@ -67,19 +65,6 @@ class AbstractBlockTest extends \PHPUnit_Framework_TestCase
      */
     public function testCssWithWrongImage()
     {
-        $objectManager = \Magento\TestFramework\Helper\Bootstrap::getObjectManager();
-        /** @var \Magento\Framework\App\Filesystem $filesystem */
-        $relativePath = $objectManager->get(
-            'Magento\Framework\App\Filesystem'
-        )->getDirectoryRead(
-            \Magento\Framework\App\Filesystem::ROOT_DIR
-        )->getRelativePath(
-            __DIR__ . '/_files'
-        );
-        /** @var $directoryList \Magento\Framework\App\Filesystem\DirectoryList */
-        $directoryList = $objectManager->get('Magento\Framework\App\Filesystem\DirectoryList');
-        $directoryList->addDirectory(\Magento\Framework\App\Filesystem::THEMES_DIR, array('path' => $relativePath));
-
         $cssUrl = $this->_block->getViewFileUrl(
             'css/wrong.css',
             array('area' => 'frontend', 'theme' => 'Magento/plushe', 'locale' => 'en_US')
@@ -383,7 +368,7 @@ class AbstractBlockTest extends \PHPUnit_Framework_TestCase
         $parent = $this->_createBlockWithLayout('parent', 'parent');
         $block = $this->_createBlockWithLayout('');
         $parent->setChild('', $block);
-        $this->assertContains('abstractblockmock', $parent->getChildNames());
+        $this->assertContains('abstractblockmock_0', $parent->getChildNames());
     }
 
     /**

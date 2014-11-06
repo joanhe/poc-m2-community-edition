@@ -27,6 +27,8 @@
  */
 namespace Magento\TestFramework;
 
+use Magento\Framework\App\Filesystem\DirectoryList;
+
 class Application
 {
     /**
@@ -37,18 +39,11 @@ class Application
     protected $_config;
 
     /**
-     * Path to shell installer script
+     * Path to shell installer and uninstaller script
      *
      * @var string
      */
-    protected $_installScript;
-
-    /**
-     * Path to shell uninstaller script
-     *
-     * @var string
-     */
-    protected $_uninstallScript;
+    protected $_script;
 
     /**
      * @var \Magento\Framework\Shell
@@ -86,10 +81,9 @@ class Application
         \Magento\Framework\ObjectManager $objectManager,
         \Magento\Framework\Shell $shell
     ) {
-        $shellDir = $config->getApplicationBaseDir() . '/dev/shell';
+        $shellDir = $config->getApplicationBaseDir() . '/setup';
         $this->_objectManager = $objectManager;
-        $this->_installScript = $this->_assertPath($shellDir . '/install.php');
-        $this->_uninstallScript = $this->_assertPath($shellDir . '/uninstall.php');
+        $this->_script = $this->_assertPath($shellDir . '/index.php');
         $this->_config = $config;
         $this->_shell = $shell;
     }
@@ -154,7 +148,7 @@ class Application
      */
     protected function _uninstall()
     {
-        $this->_shell->execute('php -f %s', array($this->_uninstallScript));
+        $this->_shell->execute('php -f %s uninstall', array($this->_script));
 
         $this->_isInstalled = false;
         $this->_fixtures = array();
@@ -171,23 +165,22 @@ class Application
     protected function _install()
     {
         $installOptions = $this->_config->getInstallOptions();
+        $installOptionsNoValue = $this->_config->getInstallOptionsNoValue();
         if (!$installOptions) {
             throw new \Magento\Framework\Exception('Trying to install Magento, but installation options are not set');
         }
 
         // Populate install options with global options
         $baseUrl = 'http://' . $this->_config->getApplicationUrlHost() . $this->_config->getApplicationUrlPath();
-        $installOptions = array_merge($installOptions, array('url' => $baseUrl, 'secure_base_url' => $baseUrl));
-        $adminOptions = $this->_config->getAdminOptions();
-        foreach ($adminOptions as $key => $val) {
-            $installOptions['admin_' . $key] = $val;
-        }
-
-        $installCmd = 'php -f %s --';
-        $installCmdArgs = array($this->_installScript);
+        $installOptions = array_merge($installOptions, array('base_url' => $baseUrl, 'base_url_secure' => $baseUrl));
+        $installCmd = 'php -f %s install';
+        $installCmdArgs = array($this->_script);
         foreach ($installOptions as $optionName => $optionValue) {
-            $installCmd .= " --{$optionName} %s";
+            $installCmd .= " --{$optionName}=%s";
             $installCmdArgs[] = $optionValue;
+        }
+        foreach ($installOptionsNoValue as $optionName) {
+            $installCmd .= " --{$optionName}";
         }
         $this->_shell->execute($installCmd, $installCmdArgs);
 
@@ -203,9 +196,9 @@ class Application
     {
         /** @var \Magento\Framework\Filesystem\Directory\Write $varDirectory */
         $varDirectory = $this->getObjectManager()->get(
-            'Magento\Framework\App\Filesystem'
+            'Magento\Framework\Filesystem'
         )->getDirectoryWrite(
-            \Magento\Framework\App\Filesystem::VAR_DIR
+            DirectoryList::VAR_DIR
         );
         $varDirectory->changePermissions('', 0777);
     }

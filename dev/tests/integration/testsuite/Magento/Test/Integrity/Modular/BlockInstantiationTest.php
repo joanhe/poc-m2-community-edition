@@ -54,8 +54,11 @@ class BlockInstantiationTest extends \Magento\TestFramework\TestCase\AbstractInt
                 );
                 \Magento\TestFramework\Helper\Bootstrap::getInstance()->loadArea($area);
 
-                $block = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->create($class);
-                $this->assertNotNull($block);
+                try {
+                    \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->create($class);
+                } catch (\Exception $e) {
+                    throw new \Exception("Unable to instantiate '{$class}'", 0, $e);
+                }
             },
             $this->allBlocksDataProvider()
         );
@@ -124,9 +127,7 @@ class BlockInstantiationTest extends \Magento\TestFramework\TestCase\AbstractInt
     private function _addBlock($module, $blockClass, $class, $templateBlocks)
     {
         $area = 'frontend';
-        if ($module == 'Magento_Install') {
-            $area = 'install';
-        } elseif ($module == 'Magento_Adminhtml' || strpos(
+        if ($module == 'Magento_Adminhtml' || strpos(
             $blockClass,
             '\\Adminhtml\\'
         ) || strpos(

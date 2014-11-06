@@ -154,7 +154,7 @@ class GroupTest extends \Magento\Backend\Utility\Controller
         /** @var \Magento\Customer\Service\V1\CustomerGroupServiceInterface $groupService */
         $groupService = Bootstrap::getObjectManager()
             ->get('Magento\Customer\Service\V1\CustomerGroupServiceInterface');
-        $customerGroupData = \Magento\Framework\Service\SimpleDataObjectConverter::toFlatArray(
+        $customerGroupData = \Magento\Framework\Api\SimpleDataObjectConverter::toFlatArray(
             $groupService->getGroup($groupId)
         );
         ksort($customerGroupData);
@@ -224,7 +224,7 @@ class GroupTest extends \Magento\Backend\Utility\Controller
         $this->assertSessionMessages($this->isEmpty(), MessageInterface::TYPE_SUCCESS);
         $this->assertSessionMessages($this->logicalNot($this->isEmpty()), MessageInterface::TYPE_ERROR);
         $this->assertSessionMessages(
-            $this->equalTo(['No such entity with groupId = 10000']),
+            $this->equalTo(['No such entity with id = 10000']),
             MessageInterface::TYPE_ERROR
         );
         $this->assertRedirect($this->stringStartsWith(self::BASE_CONTROLLER_URL . 'edit/'));

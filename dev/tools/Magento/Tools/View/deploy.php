@@ -31,8 +31,10 @@ $baseName = basename(__FILE__);
 $options = getopt('', array('langs::', 'dry-run', 'verbose::', 'help'));
 define('USAGE', "USAGE:\n\tphp -f {$baseName} -- [--langs=en_US,de_DE,...] [--verbose=0|1] [--dry-run] [--help]\n");
 require __DIR__ . '/../../../../../app/bootstrap.php';
-$autoloader = new \Magento\Framework\Autoload\IncludePath();
-$autoloader->addIncludePath([BP . '/dev/tests/static/framework', realpath(__DIR__ . '/../../..')]);
+
+\Magento\Framework\Code\Generator\FileResolver::addIncludePath(
+    [BP . '/dev/tests/static/framework', realpath(__DIR__ . '/../../..')]
+);
 
 // parse all options
 if (isset($options['help'])) {
@@ -58,9 +60,8 @@ if (isset($options['verbose'])) {
 
 // run the deployment logic
 $filesUtil = new \Magento\TestFramework\Utility\Files(BP);
-$omFactory = new \Magento\Framework\App\ObjectManagerFactory();
+$omFactory = \Magento\Framework\App\Bootstrap::createObjectManagerFactory(BP, []);
 $objectManager = $omFactory->create(
-    BP,
     [\Magento\Framework\App\State::PARAM_MODE => \Magento\Framework\App\State::MODE_DEFAULT]
 );
 $logger = new \Magento\Tools\View\Deployer\Log($verbosity);
@@ -69,5 +70,5 @@ $deployer = $objectManager->create(
     'Magento\Tools\View\Deployer',
     ['filesUtil' => $filesUtil, 'logger' => $logger, 'isDryRun' => $isDryRun]
 );
-$deployer->deploy(BP, $omFactory, $langs);
+$deployer->deploy($omFactory, $langs);
 exit(0);
